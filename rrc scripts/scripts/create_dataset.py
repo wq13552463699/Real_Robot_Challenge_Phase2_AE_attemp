@@ -37,49 +37,9 @@ def postprocess_observation(observation, bit_depth):
   return np.clip(np.floor((observation + 0.5) * 2 ** bit_depth) * 2 ** (8 - bit_depth), 0, 2 ** 8 - 1).astype(np.uint8)
 
 def _images_to_observation(images, bit_depth):
-  # print(images)
   images = torch.tensor(cv2.resize(images, (128,128), interpolation=cv2.INTER_LINEAR).transpose(2, 0, 1), dtype=torch.float32)  # Resize and put channel first
   # images = torch.tensor(cv2.resize(images, (64,64), interpolation=cv2.INTER_LINEAR).transpose(2, 0, 1), dtype=torch.float32)  # Resize and put channel first
   preprocess_observation_(images, bit_depth)  # Quantise, centre and dequantise inplace
   return images.unsqueeze(dim=0)  # Add batch dimension
-
-
-env = rearrange_dice_env_GAN.SimtoRealRearrangeDiceEnv(enable_cameras=True,visualization=False)
-
-# import random
-
-# try:
-#     os.mkdir('dataset_one_shot')
-# except OSError:
-#     pass
-
-# results_dir = './dataset_one_shot'
-
-# q = 23000
-# for _ in range(1000):
-#     a = random.randint(50, 150)
-#     i = 0
-#     env.reset()
-#     while i <= a:
-#         i += 1
-#         action = env.action_space.sample()
-#         observation,_,_,_= env.step(action)
-        
-#         # if i % 15 == 0:
-
-#         #     env_pos_mask = np.array(observation["achieved_goal"])
-#         #     env_pos_mask = env_pos_mask.transpose(1, 2, 0)
-#         #     env_pos_mask = _images_to_observation(env_pos_mask ,5)
-#         #     vutils.save_image(env_pos_mask.data, 'dataset_one_shot/%03d.jpg' % (q), normalize=True)
-#         #     q += 1
-#         #     if q % 10 == 0 :
-#         #         print(q)
-#     env_pos_mask = np.array(observation["achieved_goal"])
-#     env_pos_mask = env_pos_mask.transpose(1, 2, 0)
-#     env_pos_mask = _images_to_observation(env_pos_mask ,5)
-#     vutils.save_image(env_pos_mask.data, 'dataset_one_shot/%03d.jpg' % (q), normalize=True)
-#     q += 1
-#     print(q)
-
 
             
