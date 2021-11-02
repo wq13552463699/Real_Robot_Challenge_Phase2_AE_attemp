@@ -3,19 +3,15 @@ We(team name: thriftysnipe) are the first place winner of Phase1 in 2021 Real Ro
 Please see this page for more details: https://real-robot-challenge.com/leaderboard \
 We were granted the access to Phase 2.
 
+I am sorry, the project is too complex with too much large files, It is too hard to upload them all on Github. I just attached a part of the core code here for you to take a quick lreview. If you think my attempts is approriate, you can go to this Google Drive to download the full project file(all codes, results, trained models, environmental files,.etc):\
+https://drive.google.com/file/d/14vjCrWU6vzMdXxVSR2FeskMvuQpgqWqM/view?usp=sharing 
 
-I am sorry, the project is too complex with too much bigger files, It is too hard to upload them all on Github. I just attached a part of the core code here for you to take a quick look. If you think my attempts is approriate, you can go to this Google Drive to download the full project file(all codes, results, trained models, environmental files,.etc).<网址>\
-
-Our attempt: Segmentation map was used as observation for feeding the RL agent. Autoencoder was used to reduce the dimensionality of the data to extract the main component. The dimension of data was reduced from the original 270x270x3 to 384.
-The reconstructed image from Autoencoder was decent. However, when we fed the RL agent with a latent vector with the size of 384, it cannot make the agent learn effectively. We believe that the composition of the vector of the latent space of the autoencoder changes with the change of the input images. Although the reconstructed picture looks good, the vector of the latent space makes no sense, RL agent can hardly extract information from it
-It is recommended that people who have the same idea can use VAE to try it.
-
-## RRC phase2 task description:：
-Randomly place 25 dice with a size of 0.01x0.01x0.01m in the environment. Use your own controller to drive the three-finger robot to rearrange the dice to a specific pattern. 
-Unfortunately, due to the set task is too difficult, no team can complete the task on the actual robot, so all teams with record are awarded third place in this phase. But I think our attempt has a reference value, if later scholars conduct related research, our method may be useful.
+## RRC phase2 task description:
+Randomly place 25 dices with the size of 0.01x0.01x0.01m in the environment. Use own controller to drive the three-finger robot to rearrange the dice to a specific pattern. 
+Unfortunately, due to the set task is too difficult, no team could complete the task on the actual robot, so all teams with record are awarded third place in this phase. But I think our attempt has a reference value, if later scholars conduct related research, our method may be useful.
 
 ## Our considerations：
-We consider using a reinforcement learning algorithm as the controller in this phase. However, in this phase, information that can play as observations, such as coordinates and orientation of the dices, cannot be obtained from the environment directly but they are crucial for RL to conduct. \
+We consider using a reinforcement learning algorithm as the controller in this phase. However, in this phase, information that can play as observations, such as coordinates and orientation of the dices, cannot be obtained from the environment directly but they are crucial for RL to run. \
 The alternative observations we can use are the images of the three cameras set in 3 different angles in the environment and their segmentation masks. We picked segmentation masks rather than the raw images since the attendance of noise and redundancy in the raw images were too much. Please see the following segmentation mask example.\
 The segmentation masks have the dimension of 270x270x3, if directly passing it to the RL agent, which would lead to computational explosion and hard to converge. Hence, we planned to use some means to extract the principal components that can play as observations from it. In addition, the observation value also includes readable read-robot data(joint angle of the robot arm, end effector position, end effector speed, etc.).
 			
