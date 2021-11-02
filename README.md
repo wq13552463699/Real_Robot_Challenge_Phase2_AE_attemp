@@ -28,7 +28,7 @@ The loss function also converges to an acceptable range:\
 ## Build up observation and trian RL agent.
 We use the best AE encoder to deal with the segmentation masks to generate the observation and stitch with the readable data. The structure of the overall obervation is shown as follow:\
 <img src="https://github.com/wq13552463699/Real_Robot_Challenge_Phase2_AE_attemp/blob/main/pictures/4.png" width="1000" >
-We fed the above observations to several current cutting-edge model based and model free reinforcement learning algorithms, such as **DDPG+HER, PPO, SLAC, PlaNet and Dreamer**. We thought it would work and enable the agent to learn for somewhat anyway. But it is a pity that after many attempts, the model still didn't have any trend to converge.
+We fed the above observations to several current cutting-edge model based and model free reinforcement learning algorithms, including **DDPG+HER, PPO, SLAC, PlaNet and Dreamer**. We thought it would work and enable the agent to learn for somewhat anyway. But it is a pity that after many attempts, the model still didn't have any trend to converge.
 Due to time limited, our attempts were over here.
 
 ## Some reasons might lead to fail
