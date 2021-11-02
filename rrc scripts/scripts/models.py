@@ -7,21 +7,8 @@ from torch.nn import functional as F
 # Wraps the input tuple for a function to process a time x batch x features sequence in batch x features (assumes one output)
 def bottle(f, x_tuple):
     x_sizes = tuple(map(lambda x: x.size(), x_tuple))
-    # print('xsize',x_sizes)
-    # print(x_tuple)
-    # a = *map(lambda x: x[0].view(x[1][0] * x[1][1], *x[1][2:]), zip(x_tuple, x_sizes))
-    # print(a)
-    # print(a.size())
-    # y = f(a)
-    # y = f(*map(lambda x: print((x[0].view(x[1][0] * x[1][1], *x[1][2:]).size())), zip(x_tuple, x_sizes)))
     y = f(*map(lambda x: x[0].view(x[1][0] * x[1][1], *x[1][2:]), zip(x_tuple, x_sizes)))
-    # a = *zip(x_tuple, x_sizes)
-    # x_com = *map(lambda x: x[0].view(x[1][0] * x[1][1], *x[1][2:]), zip(x_tuple, x_sizes))
-    # print(x_com.size())
-    # print(zip(x_tuple, x_sizes))
-    # print(y)
     y_size = y.size()
-    # print(y_size)
     return y.view(x_sizes[0][0], x_sizes[0][1], *y_size[1:])
 
 
@@ -39,16 +26,6 @@ class TransitionModel(jit.ScriptModule):
     self.fc_embed_belief_posterior = nn.Linear(belief_size + embedding_size, hidden_size)
     self.fc_state_posterior = nn.Linear(hidden_size, 2 * state_size)
 
-  # Operates over (previous) state, (previous) actions, (previous) belief, (previous) nonterminals (mask), and (current) observations
-  # Diagram of expected inputs and outputs for T = 5 (-x- signifying beginning of output belief/state that gets sliced off):
-  # t :  0  1  2  3  4  5
-  # o :    -X--X--X--X--X-
-  # a : -X--X--X--X--X-
-  # n : -X--X--X--X--X-
-  # pb: -X-
-  # ps: -X-
-  # b : -x--X--X--X--X--X-
-  # s : -x--X--X--X--X--X-
   @jit.script_method
   def forward(self, prev_state:torch.Tensor, actions:torch.Tensor, prev_belief:torch.Tensor, observations:Optional[torch.Tensor]=None, nonterminals:Optional[torch.Tensor]=None) -> List[torch.Tensor]:
     # Create lists for hidden states (cannot use single tensor as buffer because autograd won't work with inplace writes)
