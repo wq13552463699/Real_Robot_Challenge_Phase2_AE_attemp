@@ -32,7 +32,7 @@ We fed the above observations to several current cutting-edge model based and mo
 Due to time limited, our attempts were over here.
 
 ## Some reasons might lead to fail
-1. We used AE as the observation model. Although the AE's dimensionality reduction capability were the best, the latent space of AE were disordered and didn't make sense to RL agent. The observations passed to the RL must be fixed and orderly. Continuous delivery of unfixed data has caused a dimensional disaster. For example, the third number in the observation vector passed at time 1 represents 'aaaaa', and the number on the same position at time 2 represents the 'bbbbb'. This disorderly change makes RL very confused.
+1. We used AE as the observation model. Although the AE's dimensionality reduction capability were the best, the latent space of AE were disordered and didn't make sense to RL agent. The observations passed to the RL must be fixed and orderly. Continuous delivery of unfixed data caused a dimensional disaster. For example, the third number in the observation vector passed at t1 represents 'infos of the 1st dice', and the number on the same position at t2 represents the 'infos of the 3rd dice'. This disorderly change with time makes RL very confused.
 2. The extracted latent space from segmentation mask dominates the observations, making RL ignore the existence of robots. The latent space size is 384, but which for the robot data is 27. The two are far apart, and there is a big data bias. 
 3. Robot arm blocked the dices, segmentation masks can only represent a part of the dice. This problem cannot be avoided and can only be solved by more powerful image processing technology. This is also a major challenge in the current Image-based RL industry
 			
