@@ -37,5 +37,5 @@ Due to time limited, our attempts were over here.
 3. Robot arm blocked the dices, segmentation masks can only represent a part of the dice. This problem cannot be avoided and can only be solved by more powerful image processing technology. This is also a major challenge in the current Image-based RL industry
 			
 ## Contribution
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 Please make sure to update tests as appropriate.
