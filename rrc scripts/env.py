@@ -62,21 +62,6 @@ class GymEnv():
         break
     
     if self.symbolic:
-      # env_pos_mask = np.array(state["achieved_goal"])
-      # env_pos_mask = env_pos_mask.transpose(1, 2, 0)
-      # env_pos_mask = _images_to_observation(env_pos_mask ,5)
-      # predict = Variable(env_pos_mask).type('torch.FloatTensor').to(device)
-      # generated = Encoder(predict)
-      # generated = Dec(generated)
-      # # generated = Dec2(generated)
-      # # generated = Inc2(generated)
-      # generated = Inc(generated)
-      # # generated,hx = RNN(generated.detach(),hx)
-      # # print(generated.shape)
-      # generated = Decoder(generated)
-      
-      # a_goal = generated.cpu().numpy()
-      
       
       observation = torch.tensor(state, dtype=torch.float32).unsqueeze(dim=0)
     else:
@@ -101,11 +86,6 @@ class GymEnv():
   @property
   def action_range(self):
     return float(self._env.action_space.low[0]), float(self._env.action_space.high[0])
-# def Env(env, symbolic, seed, max_episode_length, action_repeat, bit_depth):
-#   if env in GYM_ENVS:
-#     return GymEnv(env, symbolic, seed, max_episode_length, action_repeat, bit_depth)
-#   elif env in CONTROL_SUITE_ENVS:
-#     return ControlSuiteEnv(env, symbolic, seed, max_episode_length, action_repeat, bit_depth)
 
   # Sample an action randomly from a uniform distribution over all valid actions
   def sample_random_action(self):
