@@ -9,7 +9,7 @@ https://drive.google.com/file/d/14vjCrWU6vzMdXxVSR2FeskMvuQpgqWqM/view?usp=shari
 
 ## RRC phase2 task description:
 Randomly place 25 dices with the size of 0.01x0.01x0.01m in the environment. Use own controller to drive the three-finger robot to rearrange the dice to a specific pattern. 
-Unfortunately, due to the set task is too difficult, no team could complete the task on the actual robot, so all teams with record are awarded third place in this phase. But I think our attempt has a reference value, if later scholars conduct related research, our method may be useful.
+Unfortunately, due to the set task is too difficult, no team could complete the task on the actual robot, so all teams with record are awarded third place in this phase. But I think our attempt has a reference value, if later scholars conduct related research, our method may be useful.\
 <img src="https://github.com/wq13552463699/Real_Robot_Challenge_Phase2_AE_attemp/blob/main/pictures/2.jfif" width="633" >
 
 ## Our considerations：
