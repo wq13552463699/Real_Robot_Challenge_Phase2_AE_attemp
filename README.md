@@ -1,5 +1,5 @@
 # Real_Robot_Challenge_Phase2_AE_attemp
-We(team name:thriftysnipe) are the first place winner of Phase1 in 2021 Real Robot Challenge. \
+We(team name: thriftysnipe) are the first place winner of Phase1 in 2021 Real Robot Challenge. \
 Please see this page for more details: https://real-robot-challenge.com/leaderboard \
 To see more details about out Phase1 works: https://github.com/wq13552463699/Real_Robot_challenge \
 We were granted the access to Phase 2.
